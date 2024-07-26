@@ -22,4 +22,39 @@ impl Monster {
             attack: 10,
         }
     }
+
+    pub fn build(name: String, hp: i32, mp: i32, attack: i32) -> Monster {
+        Monster {
+            name,
+            hp,
+            mp,
+            attack
+        }
+    }
+
+    pub fn attack(&self) -> i32 {
+        self.attack
+    }
+
+    pub fn hp(&self) -> i32 {
+        self.hp
+    }
+
+    pub fn mp(&self) -> i32 {
+        self.mp
+    }
+
+    pub fn name(&self) -> &str {
+        &self.name
+    }
+
+    pub fn normal_attack(&self, target: &mut Self) -> (i32, i32) {
+        target.hp -= self.attack;
+        (self.attack, target.hp)
+    }
+
+    pub fn power_attack(&self, target: &mut Self) -> (i32, i32) {
+        target.hp -= self.attack*2;
+        (self.attack, target.hp)
+    }
 }
